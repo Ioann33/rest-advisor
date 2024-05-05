@@ -19,7 +19,7 @@ class BoredRequestService
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
         if(curl_errno($ch)) {
-            throw new Exception('Ошибка cURL: ' . curl_error($ch));
+            throw new Exception('Error cURL: ' . curl_error($ch));
         }
         curl_close($ch);
         return json_decode($response, true) ?? [];
@@ -28,8 +28,8 @@ class BoredRequestService
     /**
      * @throws Exception
      */
-    public function getRestAdvice(int $countParticipants, string $restType)
+    public function getRestAdvice(int $countParticipants, string $restType): array
     {
-        print_r($this->send("activity?participants=$countParticipants&type=$restType"));
+        return $this->send("activity?participants=$countParticipants&type=$restType");
     }
 }
