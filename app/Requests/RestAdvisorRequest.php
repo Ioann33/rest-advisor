@@ -9,6 +9,10 @@ class RestAdvisorRequest
     use Validator;
     protected array $source = [];
     protected array $params = [];
+
+    /**
+     * @throws Exception
+     */
     public function __construct(array $source)
     {
         $this->source = $source;
